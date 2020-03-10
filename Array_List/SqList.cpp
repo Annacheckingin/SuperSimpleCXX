@@ -11,7 +11,9 @@
 #include <iostream>
 using namespace std;
 #define LzgListMaxSize 100
-
+inline LzgListStatus isIndexValid(int Index,int restrictLenghth);
+inline void zeroLizepolynomial(polynomial &e);
+LzgListStatus polynomialCompare(polynomial &fe,polynomial &se);
 LzgListStatus initList(SqList &L)
 {
    L.element=(polynomial*)calloc(LzgListMaxSize,sizeof(polynomial));
@@ -19,7 +21,7 @@ LzgListStatus initList(SqList &L)
     {
         return LzgStatusError;
     }
-    L.length=1;
+    L.length=0;
     return LzgStatusOK;
 }
 //取值
@@ -58,6 +60,7 @@ LzgListStatus findElement(SqList &L,polynomial &e,int &index)
        return LzgStatusError;
 }
 //删除
+//LzgListStatus deleteElement(SqList &L,int index)
 LzgListStatus deleteElement(SqList &L,int index)
 {
     if (L.element==NULL)
@@ -76,6 +79,57 @@ LzgListStatus deleteElement(SqList &L,int index)
     L.length-=1;
     return LzgStatusOK;
 }
+//
+LzgListStatus deleteElement(SqList &L,polynomial &e)
+{
+    if (L.element==NULL)
+    {
+        return LzgStatusError;
+    }
+    for (int k=0; k<L.length; k++)
+    {
+        if (polynomialCompare(e, L.element[k])==LzgStatusOK)
+        {
+            zeroLizepolynomial(L.element[k]);
+            for (int j=k; j<=L.length; j++)
+            {
+                L.element[j]=L.element[j+1];
+                L.length-=1;
+            }
+        }
+    }
+//    for (; index<=L.length; index++)
+//    {
+//        L.element[index]=L.element[index+1];
+//    }
+    return LzgStatusOK;
+}
+//插入
+LzgListStatus insertElement(SqList &L,polynomial &e,int index)
+{
+    if (L.element==NULL)
+    {
+        cout<<"ptr is NULL"<<endl;
+        return LzgStatusError;
+    }
+    if (isIndexValid(index, L.length)==LzgStatusError)
+    {
+        cout<<"invalid Index"<<endl;
+        return LzgStatusError;
+    }
+    if (L.length==LzgListMaxSize)
+    {
+        cout<<"reach the Limit Size"<<endl;
+        return LzgStatusError;
+    }
+    L.length+=1;
+    for (int j=L.length; j>index; j--)
+    {
+        L.element[j]=L.element[j-1];
+    }
+    L.element[index]=e;
+    return LzgStatusOK;
+}
 //输出所有元素
 void outPutAllElement(SqList &L)
 {
@@ -83,6 +137,9 @@ void outPutAllElement(SqList &L)
     {
         cout<<"L is not initialized!"<<endl;
         return;
+    }
+    if (L.length==0) {
+        cout<<"this SQList is empty!"<<endl;
     }
     for (int k=0; k<L.length; k++)
     {
@@ -105,6 +162,11 @@ LzgListStatus polynomialCompare(polynomial &fe,polynomial &se)
 //索引是否合法
 inline LzgListStatus isIndexValid(int Index,int restrictLenghth)
 {
+    //针对初次L的插入
+    if (Index==0&&restrictLenghth==0)
+    {
+        return LzgStatusOK;
+    }
     if (Index<restrictLenghth&&Index>=0)
     {
         return LzgStatusOK;

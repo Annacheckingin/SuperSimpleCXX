@@ -20,7 +20,7 @@ typedef struct
     short coef;
     short expn;
 }polynomial;
-LzgListStatus polynomialCompare(polynomial &fe,polynomial &se);
+
 typedef struct
 {
     polynomial *element;
@@ -36,8 +36,11 @@ LzgListStatus findElement(SqList &L,polynomial &e,int &index);
 /*插入的函数，也需要操作的SqList的引用，然后是插入的对象，返回插入成功与否的状态码**/
 LzgListStatus insertElement(SqList &L,polynomial &e,int index);
 /*删除的动作**/
+LzgListStatus deleteElement(SqList &L,int index);
 LzgListStatus deleteElement(SqList &L,polynomial &e);
-LzgListStatus isIndexValid(int Index,int restrictLenghth);
- void zeroLizepolynomial(polynomial &e);
+//LzgListStatus isIndexValid(int Index,int restrictLenghth);
+//void zeroLizepolynomial(polynomial &e);
+void outPutAllElement(SqList &L);
+//LzgListStatus polynomialCompare(polynomial &fe,polynomial &se);
 #endif /* SqList_h */
 

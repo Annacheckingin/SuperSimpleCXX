@@ -8,8 +8,24 @@
 
 #include <iostream>
 #include "SqList.h"
+using namespace std;
 int main(int argc, const char * argv[])
 {
-  
+    SqList L;
+   LzgListStatus result= initList(L);
+    if (result==LzgStatusOK)
+    {
+         polynomial x={1,2};
+        if (insertElement(L, x, 0)==LzgStatusOK)
+        {
+             outPutAllElement(L);
+        }
+        else
+        {
+            cout<<"failed to output"<<endl;
+        }
+        
+    }
+   
     return 0;
 }
