@@ -38,5 +38,6 @@ LzgListStatus insertElement(SqList &L,polynomial &e,int index);
 /*删除的动作**/
 LzgListStatus deleteElement(SqList &L,polynomial &e);
 LzgListStatus isIndexValid(int Index,int restrictLenghth);
+ void zeroLizepolynomial(polynomial &e);
 #endif /* SqList_h */
 
