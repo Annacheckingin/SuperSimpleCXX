@@ -27,5 +27,9 @@ int main(int argc, const char * argv[])
         
     }
    
+    clearSqlist(L);
+    outPutAllElement(L);
+    destroySqlist(L);
+    outPutAllElement(L);
     return 0;
 }

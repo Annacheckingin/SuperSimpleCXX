@@ -8,13 +8,7 @@
 
 #ifndef SqList_h
 #define SqList_h
-typedef enum LzgListStatus :int  LzgListStatus;
-enum LzgListStatus :int
-{
-    LzgStatusOK=1,
-    LzgStatusError=0,
-    LzgStatusFailed
-};
+#include "LzgStatus.h"
 typedef struct
 {
     short coef;
@@ -38,6 +32,8 @@ LzgListStatus insertElement(SqList &L,polynomial &e,int index);
 /*删除的动作**/
 LzgListStatus deleteElement(SqList &L,int index);
 LzgListStatus deleteElement(SqList &L,polynomial &e);
+void clearSqlist(SqList &L);
+void destroySqlist(SqList &L);
 //LzgListStatus isIndexValid(int Index,int restrictLenghth);
 //void zeroLizepolynomial(polynomial &e);
 void outPutAllElement(SqList &L);

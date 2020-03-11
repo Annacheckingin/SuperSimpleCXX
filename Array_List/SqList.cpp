@@ -9,8 +9,8 @@
 #include <stdio.h>
 #include "SqList.h"
 #include <iostream>
-using namespace std;
 #define LzgListMaxSize 100
+using namespace std;
 inline LzgListStatus isIndexValid(int Index,int restrictLenghth);
 inline void zeroLizepolynomial(polynomial &e);
 LzgListStatus polynomialCompare(polynomial &fe,polynomial &se);
@@ -131,11 +131,32 @@ LzgListStatus insertElement(SqList &L,polynomial &e,int index)
     return LzgStatusOK;
 }
 //输出所有元素
+void destroySqlist(SqList &L)
+{
+    if (L.element==NULL)
+    {
+        return;
+    }
+//    free(L.element);
+    delete L.element;
+    L.element=NULL;
+    L.length=0;
+}
+//
+void clearSqlist(SqList &L)
+{   
+    for (int k=0; k<L.length; k++)
+    {
+        zeroLizepolynomial(L.element[k]);
+    }
+    L.length=0;
+}
+//
 void outPutAllElement(SqList &L)
 {
     if (L.element==NULL)
     {
-        cout<<"L is not initialized!"<<endl;
+        cout<<"Sqlist is not initialized!"<<endl;
         return;
     }
     if (L.length==0) {
