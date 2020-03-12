@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2760B0C82415F9C400BFB481 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2760B0C72415F9C400BFB481 /* main.cpp */; };
 		2760B0CF2416198900BFB481 /* SqList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2760B0CE2416198900BFB481 /* SqList.cpp */; };
+		277D923A2419E7EA00BC3E1C /* book.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 277D92352419E7EA00BC3E1C /* book.cpp */; };
+		277D923B2419E7EA00BC3E1C /* SingleNodeList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 277D92362419E7EA00BC3E1C /* SingleNodeList.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +30,11 @@
 		2760B0C72415F9C400BFB481 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2760B0CE2416198900BFB481 /* SqList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SqList.cpp; sourceTree = "<group>"; };
 		2760B0D024161A6300BFB481 /* SqList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SqList.h; sourceTree = "<group>"; };
+		277D92352419E7EA00BC3E1C /* book.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = book.cpp; sourceTree = "<group>"; };
+		277D92362419E7EA00BC3E1C /* SingleNodeList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingleNodeList.cpp; sourceTree = "<group>"; };
+		277D92372419E7EA00BC3E1C /* book.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = book.hpp; sourceTree = "<group>"; };
+		277D92382419E7EA00BC3E1C /* LzgStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LzgStatus.h; sourceTree = "<group>"; };
+		277D92392419E7EA00BC3E1C /* SingleNodeList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SingleNodeList.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +67,11 @@
 		2760B0C62415F9C400BFB481 /* Array_List */ = {
 			isa = PBXGroup;
 			children = (
+				277D92352419E7EA00BC3E1C /* book.cpp */,
+				277D92372419E7EA00BC3E1C /* book.hpp */,
+				277D92382419E7EA00BC3E1C /* LzgStatus.h */,
+				277D92362419E7EA00BC3E1C /* SingleNodeList.cpp */,
+				277D92392419E7EA00BC3E1C /* SingleNodeList.hpp */,
 				2760B0C72415F9C400BFB481 /* main.cpp */,
 				2760B0CE2416198900BFB481 /* SqList.cpp */,
 				2760B0D024161A6300BFB481 /* SqList.h */,
@@ -126,6 +138,8 @@
 			files = (
 				2760B0C82415F9C400BFB481 /* main.cpp in Sources */,
 				2760B0CF2416198900BFB481 /* SqList.cpp in Sources */,
+				277D923A2419E7EA00BC3E1C /* book.cpp in Sources */,
+				277D923B2419E7EA00BC3E1C /* SingleNodeList.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
