@@ -67,14 +67,14 @@
 		2760B0C62415F9C400BFB481 /* Array_List */ = {
 			isa = PBXGroup;
 			children = (
-				277D92352419E7EA00BC3E1C /* book.cpp */,
-				277D92372419E7EA00BC3E1C /* book.hpp */,
-				277D92382419E7EA00BC3E1C /* LzgStatus.h */,
+				2760B0C72415F9C400BFB481 /* main.cpp */,
 				277D92362419E7EA00BC3E1C /* SingleNodeList.cpp */,
 				277D92392419E7EA00BC3E1C /* SingleNodeList.hpp */,
-				2760B0C72415F9C400BFB481 /* main.cpp */,
+				277D92352419E7EA00BC3E1C /* book.cpp */,
+				277D92372419E7EA00BC3E1C /* book.hpp */,
 				2760B0CE2416198900BFB481 /* SqList.cpp */,
 				2760B0D024161A6300BFB481 /* SqList.h */,
+				277D92382419E7EA00BC3E1C /* LzgStatus.h */,
 			);
 			path = Array_List;
 			sourceTree = "<group>";

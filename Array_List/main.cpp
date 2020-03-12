@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "SqList.h"
+#include "SingleNodeList.hpp"
 using namespace std;
 int main(int argc, const char * argv[])
 {
@@ -31,5 +32,12 @@ int main(int argc, const char * argv[])
     outPutAllElement(L);
     destroySqlist(L);
     outPutAllElement(L);
+    //
+    LNodeList list;
+    LzgListStatus x=initList(list);
+    if (x==LzgStatusOK)
+    {
+        
+    }
     return 0;
 }

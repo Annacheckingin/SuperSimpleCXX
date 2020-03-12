@@ -124,7 +124,31 @@ void outPutAllList(LNodeList &L)
 void sortNodeList(LNodeList &L)
 {
     //冒泡法-按照价格
-    
+    LNodeptr anode=L->next;
+    LNodeptr lowestPriceNode=anode;
+    for (LNodeptr preNode=L; anode!=nullptr; anode=anode->next,preNode=preNode->next)
+    {
+        LNodeptr nextNode=anode->next;
+        LNodeptr forWardNode=anode->next;
+        LNodeptr prefor=anode;
+        LNodeptr nextforward=forWardNode->next;
+        for (; forWardNode!=nullptr; forWardNode=forWardNode->next,prefor=prefor->next,nextforward=nextforward->next)
+        {
+            
+            book *lhbook=lowestPriceNode->data;
+            book *rhbook=forWardNode->data;
+            if (lhbook->price>rhbook->price)
+            {
+                lowestPriceNode=forWardNode;
+            }
+        }
+        //
+        prefor->next=nextforward;
+        preNode->next=lowestPriceNode;
+        lowestPriceNode->next=nextNode;
+        //
+        
+    }
     
 }
 inline void assginLNodeValue(LNodeptr &from,LNodeptr &to)
