@@ -15,19 +15,19 @@ book *creatAbook()
     innerbook->price=0;
     return innerbook;
 }
-char *getName(book &b)
+char *getName(book* &b)
 {
-    return b.name;
+    return b->name;
 }
-void setName(book &b,char *newName)
+void setName(book* &b,char *newName)
 {
-    b.name=newName;
+    b->name=newName;
 }
-float getPrice(book &b)
+float getPrice(book* &b)
 {
-    return b.price;
+    return b->price;
 }
-void setPrice(book &b,float newPrice)
+void setPrice(book* &b,float newPrice)
 {
-    b.price=newPrice;
+    b->price=newPrice;
 }

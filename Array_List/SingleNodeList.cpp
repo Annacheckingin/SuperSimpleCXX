@@ -14,6 +14,7 @@ inline LzgStatusCompare lNodeCompare(LNodeptr lh,LNodeptr rh);
 LNodeptr creatANode()
 {
     LNodeptr anode=(LNodeptr)calloc(1, sizeof(LNode));
+    anode->next=nullptr;
     return anode;
 }
 LzgListStatus initList(LNodeList &L)
@@ -24,11 +25,11 @@ LzgListStatus initList(LNodeList &L)
         return LzgStatusError;
     }
 //    L->data=abook;
-    LNode *node=(LNode *)calloc(1, sizeof(LNode));
-    node->next=nullptr;
-    node->data=abook;
+      L=creatANode();
+//    LNodeptr node=creatANode();
+     L->next=nullptr;
+    
     //
-     L->next=node;
     return LzgStatusOK;
 }
 LzgListStatus insertList(LNodeList &L,LNodeptr &n,int index)
@@ -47,6 +48,14 @@ LzgListStatus insertList(LNodeList &L,LNodeptr &n,int index)
             return LzgStatusOK;
         }
     }
+    return LzgStatusError;
+}
+LzgListStatus insertList(LNodeList &L,LNodeptr &n)
+{
+    LNode *headfor=L;
+    for (; headfor->next!=nullptr;headfor=headfor->next);
+    headfor->next=n;
+    n->next=nullptr;
     return LzgStatusError;
 }
 LzgListStatus deleteList(LNodeList &L,LNodeptr &n)
@@ -110,46 +119,163 @@ LzgListStatus deleteListWithIndex(LNodeList &L,int index)
 }
 void outPutAllList(LNodeList &L)
 {
-    
+    cout<<"outPut:"<<endl;
+//    static int i=0;
     LNodeptr node=L->next;
     if (node==nullptr)
     {
         cout<<"NodeList was not initialized"<<endl;
+        return;
     }
+    printf("|");
     for (; node!=nullptr; node=node->next)
     {
+//        i++;
+//        printf("%ld\n",i);
         printf("%s:%lf->",node->data->name,node->data->price);
     }
+    cout<<"|"<<endl;
 }
 void sortNodeList(LNodeList &L)
 {
     //冒泡法-按照价格
-    LNodeptr anode=L->next;
-    LNodeptr lowestPriceNode=anode;
-    for (LNodeptr preNode=L; anode!=nullptr; anode=anode->next,preNode=preNode->next)
+//    LNodeptr anode=L->next;
+//    LNodeptr lowestPriceNode=anode;
+//    LNodeptr nextNode=anode->next;
+//
+//    for (LNodeptr preNode=L; anode->next->next!=nullptr; anode=anode->next,preNode=preNode->next,nextNode=nextNode->next)
+//    {
+//                //
+//
+//        LNodeptr prefor=preNode;
+//        LNodeptr forWardNode=anode;
+//        LNodeptr nextforward=forWardNode->next;
+//        //
+//        for (;forWardNode->next!=nullptr; forWardNode=forWardNode->next,prefor=prefor->next,nextforward=nextforward->next)
+//        {
+//            printf("x");
+//            book *lhbook=lowestPriceNode->data;
+//            book *rhbook=forWardNode->data;
+//            if (lhbook->price>rhbook->price)
+//            {
+//                printf("lowest change");
+//                lowestPriceNode=forWardNode;
+//            }
+//
+//        }
+//        //
+////        prefor->next=nextforward;
+////        preNode->next=lowestPriceNode;
+////        lowestPriceNode->next=nextNode;
+//        //
+//        prefor->next=lowestPriceNode->next;
+////        forWardNode->next=nextforward;
+//        preNode->next=lowestPriceNode;
+//        lowestPriceNode->next=nextNode;
+//        static int i=0;
+//        i++;
+//        printf("%ld",i);
+//    }
+//    LNodeptr headestPtr=L;
+    LNodeptr preNode=L;
+    LNodeptr currentNode=L->next;
+    
+    for (;currentNode->next!=nullptr; preNode=preNode->next,currentNode=currentNode->next)
     {
-        LNodeptr nextNode=anode->next;
-        LNodeptr forWardNode=anode->next;
-        LNodeptr prefor=anode;
-        LNodeptr nextforward=forWardNode->next;
-        for (; forWardNode!=nullptr; forWardNode=forWardNode->next,prefor=prefor->next,nextforward=nextforward->next)
+//        cout<<"currentNide:"<<currentNode->data->name<<endl;
+//        cout<<"nextNodel"<<currentNode->next->data->name<<endl;
+//        cout<<"ok"<<endl;
+        LNodeptr nextNode=currentNode->next;
+        LNodeptr matchPre=preNode;
+        LNodeptr minNode=currentNode;
+        LNodeptr minnextNode=minNode->next;
+        LNodeptr inerBeginNode=currentNode;
+     for (;inerBeginNode!=nullptr;
+     inerBeginNode=inerBeginNode->next)
         {
-            
-            book *lhbook=lowestPriceNode->data;
-            book *rhbook=forWardNode->data;
-            if (lhbook->price>rhbook->price)
+//            if (inerBeginNode==nullptr) {
+////                cout<<"innerBeginNode:null"<<endl;
+//            }
+//            cout<<"innerBeginNode:"<<inerBeginNode->data->name<<endl;
+//            cout<<"hereh"<<endl;
+            book *lh=minNode->data;
+            LNodeptr innerNextNode=inerBeginNode->next;
+            if (innerNextNode==nullptr)
             {
-                lowestPriceNode=forWardNode;
+//                cout<<"gonnan break"<<endl;
+                break;
+            }
+            book *rh=innerNextNode->data;
+//            cout<<"compare:"<<lh->price<<"-"<<rh->price<<endl;
+            if (lh->price>rh->price)
+            {
+                matchPre=inerBeginNode;
+                minNode=innerNextNode;
+                minnextNode=minNode->next;
+//                cout<<"minchange-min"<<minNode->data->price<<endl;
             }
         }
-        //
-        prefor->next=nextforward;
-        preNode->next=lowestPriceNode;
-        lowestPriceNode->next=nextNode;
-        //
-        
+//        if (preNode->data!=nullptr) {
+//            cout<<preNode->data->price<<endl;
+//        }
+//        else
+//        {
+//            cout<<"blank"<<endl;
+//        }
+//
+//        cout<<"current:"<<currentNode->data->price<<endl;
+//        if (matchPre->data!=nullptr)
+//
+//        {
+//             cout<<"match"<<matchPre->data->price<<endl;
+//        }
+//
+//        cout<<currentNode->next->data->price<<endl;
+//        cout<<minNode->data->price<<endl;
+        if (matchPre!=currentNode)
+        {
+            matchPre->next=currentNode;
+        }
+        if (minNode->next!=nullptr)
+        {
+//            cout<<"min->notnull"<<endl;
+            preNode->next=minNode;
+            minNode->next=nextNode;
+            //
+            currentNode->next=minnextNode;
+//            preNode->next=minNode;
+//            minNode->next=currentNode;
+            matchPre->next=currentNode;
+            currentNode=minNode;
+            
+        }
+        else
+        {
+//            cout<<"min->null"<<endl;
+            preNode->next=minNode;
+            if (minNode!=nextNode)
+            {
+                minNode->next=nextNode;
+            }
+            else
+            {
+                minNode->next=currentNode;
+                currentNode->next=nullptr;
+            }
+//            if ( matchPre->next!=currentNode)
+//            {
+//                 matchPre->next=currentNode;
+//            }
+//            else
+//            {
+//                matchPre->next=nullptr;
+//            }
+
+
+            currentNode->next=nullptr;
+            currentNode=minNode;
+        }
     }
-    
 }
 inline void assginLNodeValue(LNodeptr &from,LNodeptr &to)
 {

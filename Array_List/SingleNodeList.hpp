@@ -24,6 +24,7 @@ typedef LNode* LNodeList;
 LNodeptr creatANode();
 LzgListStatus initList(LNodeList &L);
 LzgListStatus insertList(LNodeList &L,LNodeptr &n,int index);
+LzgListStatus insertList(LNodeList &L,LNodeptr &n);
 LzgListStatus deleteList(LNodeList &L,LNodeptr &n);
 LzgListStatus deleteListWithIndex(LNodeList &L,int index);
 void outPutAllList(LNodeList &L);

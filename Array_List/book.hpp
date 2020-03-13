@@ -16,8 +16,8 @@ typedef struct
     float price;
 }book;
 book *creatAbook();
-char *getName(book &b);
-void setName(book &b,char *newName);
-float getPrice(book &b);
-void setPrice(book &b,float newPrice);
+char *getName(book* &b);
+void setName(book* &b,char *newName);
+float getPrice(book* &b);
+void setPrice(book* &b,float newPrice);
 #endif /* book_hpp */
