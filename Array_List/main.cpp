@@ -71,12 +71,20 @@ int main(int argc, const char * argv[])
     setName(dbook,nameOfdbook);
     d->data=dbook;
     //
+    LNodeptr e=creatANode();
+    book *ebook=creatAbook();
+    setPrice(ebook, 2);
+    char *nameOfebook=(char *)malloc(sizeof("swift")+1);
+    strcpy(nameOfebook, "swift");
+    setName(ebook,nameOfebook);
+    e->data=ebook;
     if (x==LzgStatusOK)
     {
         insertList(list, a);
         insertList(list, b);
         insertList(list, c);
         insertList(list, d);
+        insertList(list, e);
         outPutAllList(list);
         sortNodeList(list);
         outPutAllList(list);

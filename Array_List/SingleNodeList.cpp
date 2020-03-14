@@ -139,52 +139,12 @@ void outPutAllList(LNodeList &L)
 void sortNodeList(LNodeList &L)
 {
     //冒泡法-按照价格
-//    LNodeptr anode=L->next;
-//    LNodeptr lowestPriceNode=anode;
-//    LNodeptr nextNode=anode->next;
-//
-//    for (LNodeptr preNode=L; anode->next->next!=nullptr; anode=anode->next,preNode=preNode->next,nextNode=nextNode->next)
-//    {
-//                //
-//
-//        LNodeptr prefor=preNode;
-//        LNodeptr forWardNode=anode;
-//        LNodeptr nextforward=forWardNode->next;
-//        //
-//        for (;forWardNode->next!=nullptr; forWardNode=forWardNode->next,prefor=prefor->next,nextforward=nextforward->next)
-//        {
-//            printf("x");
-//            book *lhbook=lowestPriceNode->data;
-//            book *rhbook=forWardNode->data;
-//            if (lhbook->price>rhbook->price)
-//            {
-//                printf("lowest change");
-//                lowestPriceNode=forWardNode;
-//            }
-//
-//        }
-//        //
-////        prefor->next=nextforward;
-////        preNode->next=lowestPriceNode;
-////        lowestPriceNode->next=nextNode;
-//        //
-//        prefor->next=lowestPriceNode->next;
-////        forWardNode->next=nextforward;
-//        preNode->next=lowestPriceNode;
-//        lowestPriceNode->next=nextNode;
-//        static int i=0;
-//        i++;
-//        printf("%ld",i);
-//    }
-//    LNodeptr headestPtr=L;
+
     LNodeptr preNode=L;
     LNodeptr currentNode=L->next;
     
     for (;currentNode->next!=nullptr; preNode=preNode->next,currentNode=currentNode->next)
     {
-//        cout<<"currentNide:"<<currentNode->data->name<<endl;
-//        cout<<"nextNodel"<<currentNode->next->data->name<<endl;
-//        cout<<"ok"<<endl;
         LNodeptr nextNode=currentNode->next;
         LNodeptr matchPre=preNode;
         LNodeptr minNode=currentNode;
@@ -193,65 +153,36 @@ void sortNodeList(LNodeList &L)
      for (;inerBeginNode!=nullptr;
      inerBeginNode=inerBeginNode->next)
         {
-//            if (inerBeginNode==nullptr) {
-////                cout<<"innerBeginNode:null"<<endl;
-//            }
-//            cout<<"innerBeginNode:"<<inerBeginNode->data->name<<endl;
-//            cout<<"hereh"<<endl;
             book *lh=minNode->data;
             LNodeptr innerNextNode=inerBeginNode->next;
             if (innerNextNode==nullptr)
             {
-//                cout<<"gonnan break"<<endl;
+
                 break;
             }
             book *rh=innerNextNode->data;
-//            cout<<"compare:"<<lh->price<<"-"<<rh->price<<endl;
+
             if (lh->price>rh->price)
             {
                 matchPre=inerBeginNode;
                 minNode=innerNextNode;
                 minnextNode=minNode->next;
-//                cout<<"minchange-min"<<minNode->data->price<<endl;
             }
         }
-//        if (preNode->data!=nullptr) {
-//            cout<<preNode->data->price<<endl;
-//        }
-//        else
-//        {
-//            cout<<"blank"<<endl;
-//        }
-//
-//        cout<<"current:"<<currentNode->data->price<<endl;
-//        if (matchPre->data!=nullptr)
-//
-//        {
-//             cout<<"match"<<matchPre->data->price<<endl;
-//        }
-//
-//        cout<<currentNode->next->data->price<<endl;
-//        cout<<minNode->data->price<<endl;
         if (matchPre!=currentNode)
         {
             matchPre->next=currentNode;
         }
         if (minNode->next!=nullptr)
         {
-//            cout<<"min->notnull"<<endl;
             preNode->next=minNode;
             minNode->next=nextNode;
-            //
             currentNode->next=minnextNode;
-//            preNode->next=minNode;
-//            minNode->next=currentNode;
             matchPre->next=currentNode;
             currentNode=minNode;
-            
         }
         else
         {
-//            cout<<"min->null"<<endl;
             preNode->next=minNode;
             if (minNode!=nextNode)
             {
@@ -262,16 +193,6 @@ void sortNodeList(LNodeList &L)
                 minNode->next=currentNode;
                 currentNode->next=nullptr;
             }
-//            if ( matchPre->next!=currentNode)
-//            {
-//                 matchPre->next=currentNode;
-//            }
-//            else
-//            {
-//                matchPre->next=nullptr;
-//            }
-
-
             currentNode->next=nullptr;
             currentNode=minNode;
         }
