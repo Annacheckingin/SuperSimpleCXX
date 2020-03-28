@@ -90,7 +90,8 @@ LzgListStatus insertList(LNodeList &L,LNodeptr &n,int index)
 {
     //跳过头指针
     LNode *headfor=L->next;
-    for (int k=0; headfor->next!=nullptr;headfor=headfor->next)
+    LNodeptr preNode=L;
+    for (int k=0; headfor->next!=nullptr;headfor=headfor->next,preNode=preNode->next)
     {
         if (k<index)
         {
@@ -98,7 +99,9 @@ LzgListStatus insertList(LNodeList &L,LNodeptr &n,int index)
         }
         else if(k==index)
         {
-            assginLNodeValue(headfor, n);
+          
+            preNode->next=n;
+            n->next=headfor;
             return LzgStatusOK;
         }
     }
@@ -107,7 +110,7 @@ LzgListStatus insertList(LNodeList &L,LNodeptr &n,int index)
 LzgListStatus insertList(LNodeList &L,LNodeptr &n)
 {
     LNode *headfor=L;
-    for (; headfor->next!=nullptr;headfor=headfor->next);
+    for (;headfor->next!=nullptr;headfor=headfor->next);
     headfor->next=n;
     n->next=nullptr;
     return LzgStatusError;
@@ -151,16 +154,7 @@ LzgListStatus deleteListWithIndex(LNodeList &L,int index)
     }
     LNodeptr anode_a=L->next;
     LNodeptr pre=nullptr;
-//    for (;anode_a!=nullptr;pre=anode_a,anode_a=anode_a->next)
-//    {
-//        index--;
-//        if (index==0)
-//        {
-//            pre->next=anode_a->next;
-//            free(anode_a);
-//        }
-//    }
-    
+
     for (int k=index+1; k>0; k--)
     {
         pre=anode_a;
