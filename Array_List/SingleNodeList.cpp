@@ -32,6 +32,60 @@ LzgListStatus initList(LNodeList &L)
     //
     return LzgStatusOK;
 }
+LNodeptr getItem(LNodeList &list,int index)
+{
+    if (index<0)
+    {
+        return nullptr;
+    }
+    
+    LNodeptr headitem=list;
+    for (;index>=0;index--)
+    {
+        if (headitem==nullptr)
+        {
+            break;
+        }
+        headitem=headitem->next;
+       
+    }
+    return headitem;
+}
+LzgListStatus findeNode(LNodeList &L,LNodeptr &anode)
+{
+    if (anode==nullptr||L==nullptr)
+    {
+        return LzgStatusError;
+    }
+    LNodeptr node=L;
+    for (;node!=nullptr;node=node->next)
+    {
+        if (strcmp(node->data->name, anode->data->name)==0)
+        {
+            
+            return LzgStatusOK;
+        }
+    }
+    return LzgStatusError;
+}
+LzgListStatus copyNode(LNodeptr from,LNodeptr to)
+{
+    if (from==nullptr||to==nullptr)
+    {
+        return LzgStatusError;
+    }
+    strcpy(to->data->name, from->data->name);
+    to->next=nullptr;
+    return LzgStatusOK;
+}
+void printLNode(LNodeptr node)
+{
+    if (node==nullptr)
+    {
+        cout<<"null node!"<<endl;
+    }
+    cout<<"node:["<<"name:"<<node->data->name<<" "<<"price:"<<node->data->price<<"]"<<endl;
+}
 LzgListStatus insertList(LNodeList &L,LNodeptr &n,int index)
 {
     //跳过头指针

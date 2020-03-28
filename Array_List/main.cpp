@@ -88,6 +88,8 @@ int main(int argc, const char * argv[])
         outPutAllList(list);
         sortNodeList(list);
         outPutAllList(list);
+        LNodeptr anode=getItem(list, 2);
+        printLNode(anode);
     }
     return 0;
 }
