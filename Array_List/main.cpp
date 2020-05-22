@@ -9,7 +9,11 @@
 #include <iostream>
 #include "SqList.h"
 #include "SingleNodeList.hpp"
+#include "Stack.hpp"
+#include "LzgQueue.hpp"
 using namespace std;
+
+
 int main(int argc, const char * argv[])
 {
     SqList L;
@@ -90,6 +94,69 @@ int main(int argc, const char * argv[])
         outPutAllList(list);
         LNodeptr anode=getItem(list, 2);
         printLNode(anode);
+    }
+    //////////////////////////////////////////////////////////////////
+    cout<<"stack test begin:"<<endl;
+    cout<<endl;
+    lzgStackPtr astack=nullptr;
+    lzgStatus resultCode=initStack(astack);
+    if (resultCode==LzgStatusOK)
+    {
+        stackNodePtr aNode;
+        lzgStatus resultStatus=initStackNode(aNode);
+        if (resultStatus==LzgStatusOK)
+        {
+            aNode->num=1;
+            push(astack, aNode);
+        }
+    }
+    
+    describeStack(astack);
+    pop(astack);
+     describeStack(astack);
+    stackNodePtr newstackNode;
+    lzgStatus res =  initStackNode(newstackNode);
+    if (res==LzgStatusOK)
+    {
+        push(astack, newstackNode);
+    }
+    describeStack(astack);
+    cout<<"Queue Operations:"<<endl;
+    
+    
+    
+    lzgQueuePtr aqueue=initAQueue();
+    if (aqueue!=nullptr)
+    {
+        QueueItem *aitem=initAItem();
+        aitem->num=0;
+        pushInQueue(aqueue, aitem);
+        //
+        QueueItem *bitem=initAItem();
+        bitem->num=1;
+        pushInQueue(aqueue, bitem);
+        QueueItem *citem=initAItem();
+               citem->num=2;
+               pushInQueue(aqueue, citem);
+        QueueItem *ditem=initAItem();
+               ditem->num=3;
+               pushInQueue(aqueue, ditem);
+        QueueItem *eitem=initAItem();
+               eitem->num=4;
+               pushInQueue(aqueue, eitem);
+        QueueItem *fitem=initAItem();
+               fitem->num=5;
+               pushInQueue(aqueue, fitem);
+        QueuePop(aqueue);
+        QueuePop(aqueue);
+        QueueItem *gitem=initAItem();
+                      gitem->num=6;
+                      pushInQueue(aqueue, gitem);
+        describeQueue(aqueue);
+    }
+    else
+    {
+        cout<<"queue was empty"<<endl;
     }
     return 0;
 }

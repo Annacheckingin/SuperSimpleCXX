@@ -20,6 +20,8 @@ enum LzgListStatus :int
     LzgStatusOK,
     LzgStatusError,
 };
+
+typedef LzgListStatus lzgStatus;
 //下面是NS_OPTIONS的宏定义，针对C++在NS_ENUM枚举值之间的计算结果无法隐式转化为枚举的底层数据的情况
 typedef int LzgStatusCompare;
 enum:int{
